@@ -28,6 +28,12 @@ declare class tt {
   static downloadFile: any;
   static saveImageToPhotosAlbum: any;
 }
+declare class my {
+  static ap: {
+    openAlipayApp: any;
+    navigateToAlipayPage: any;
+  };
+}
 declare namespace Taro {
   interface TaroStatic {
     pay: (option: {
