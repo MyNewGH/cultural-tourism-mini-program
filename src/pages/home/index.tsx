@@ -52,6 +52,11 @@ const Home = () => {
       });
     }
   };
+  const handleClickTwoPlate = (code: number) => {
+    my.ap.navigateToAlipayPage({
+      path: `https://render.alipay.com/p/s/i?appId=${code}`,
+    });
+  };
   return (
     <View className="tw-bg-[#dde5e9] tw-h-screen tw-relative">
       <HeaderSwiper />
@@ -130,7 +135,7 @@ const Home = () => {
                         <View
                           key={index}
                           className="tw-flex tw-flex-col tw-justify-center tw-items-center tw-w-ful  tw-flex-1"
-                          onClick={() => handleClickOnePlate(plateTwo[item].scheme)}
+                          onClick={() => (plateTwo[item].scheme ? handleClickOnePlate(plateTwo[item].scheme) : handleClickTwoPlate(son.code))}
                         >
                           <Image
                             src={son.icon}
@@ -186,9 +191,7 @@ const Home = () => {
                     style={{ backgroundImage: `url(${item.bg})`, backgroundSize: '100%' }}
                     className=" tw-w-full tw-flex  tw-h-[66px] "
                     onClick={() => {
-                      my.ap.navigateToAlipayPage({
-                        path: 'https://render.alipay.com/p/s/i?appId=20000923',
-                      });
+                      handleClickTwoPlate(item.code);
                     }}
                   >
                     <View className="tw-w-1/4 tw-flex tw-items-center tw-justify-center tw-h-full tw-gap-[2px]">

@@ -1,10 +1,10 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
-import { Popup } from "@antmjs/vantui";
-import { PopupProps } from "@antmjs/vantui/types/popup";
-import classNames from "classnames";
+import { forwardRef, useImperativeHandle, useState } from 'react';
+import { Popup } from '@antmjs/vantui';
+import { PopupProps } from '@antmjs/vantui/types/popup';
+import classNames from 'classnames';
 
 export interface PopupRef {
-  setVisible: (show: boolean) => void;
+  setVisible?: (show: boolean) => void;
 }
 
 const PopupCom = forwardRef<PopupRef, PopupProps>((props, ref) => {
@@ -22,12 +22,7 @@ const PopupCom = forwardRef<PopupRef, PopupProps>((props, ref) => {
     setVisible(false);
   };
   return (
-    <Popup
-      show={visible}
-      onClose={handleClose}
-      className={classNames("tw-overflow-hidden tw-w-full", className)}
-      {...rest}
-    >
+    <Popup show={visible} onClose={handleClose} className={classNames('tw-overflow-hidden tw-w-full', className)} {...rest}>
       {children}
     </Popup>
   );

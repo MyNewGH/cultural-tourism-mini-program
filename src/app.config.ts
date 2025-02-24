@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/home/index', 'pages/mine/index'],
+  pages: ['pages/mine/index', 'pages/home/index'],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
@@ -20,7 +20,7 @@ export default {
       },
       {
         pagePath: 'pages/mine/index',
-        text: '资讯',
+        text: '游历湾区',
         iconPath: 'assets/images/mine.png',
         selectedIconPath: 'assets/images/mine_active.png',
       },

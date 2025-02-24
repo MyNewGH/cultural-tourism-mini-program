@@ -46,20 +46,21 @@ export const plateTwo = {
   run: {
     title: '畅行湾区',
     bg: 'linear-gradient(180.00deg, rgb(255, 184, 139),rgb(238, 104, 93) 100%)',
-    scheme: 'alipays://platformapi/startapp?appId=2018081461095002',
     list: [
       {
         icon: airTicket,
         name: '机票',
         height: 20,
+        code: 60000138,
       },
       {
         icon: trainTicket,
         name: '火车票',
         height: 20,
+        code: 20000135,
       },
-      { icon: hotel, name: '酒店' },
-      { icon: homestay, name: '民宿' },
+      { icon: hotel, name: '酒店', code: 20000155 },
+      { icon: homestay, name: '民宿', code: 20000155 },
     ],
   },
   eat: {
@@ -92,24 +93,28 @@ export const godCoupons = [
     bg: godCoupon1,
     rule: '',
     price: '30',
+    code: 20000120,
   },
   {
     name: '电影/演出',
     rule: '',
     bg: godCoupon2,
     price: '20',
+    code: 60000130,
   },
   {
     name: '景点/周边游',
     bg: godCoupon3,
     rule: '',
     price: '20',
+    code: 60000147,
   },
   {
     name: '丽人/美发',
     rule: '',
     bg: godCoupon4,
     price: '70',
+    code: 60000008,
   },
 ];
 export const godScheme = 'alipays://platformapi/startapp?appId=2021004161614882';
