@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/mine/index', 'pages/home/index'],
+  pages: ['pages/home/index', 'pages/mine/index'],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

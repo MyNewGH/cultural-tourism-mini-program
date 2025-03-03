@@ -1,11 +1,11 @@
-import { Image, ScrollView, Text, View, Block } from '@tarojs/components';
+import { Image, Text, View, Block, ScrollView } from '@tarojs/components';
 import contentBg from '@/assets/images/content-bg.png';
 import localLife from '@/assets/images/local-life.png';
 import local from '@/assets/images/local.png';
 import HeaderSwiper from '@/components/headerSwiper';
 import Info from '@/components/info';
 import eye from '@/assets/images/eye.png';
-import { citys, news } from '@/pages/mine/config';
+import { cityNews, citys } from '@/pages/mine/config';
 import { useState } from 'react';
 import { IndexBar, IndexAnchor, Cell, Sticky } from '@antmjs/vantui';
 import classNames from 'classnames';
@@ -14,6 +14,8 @@ const hotCity = ['广州', '深圳', '北京', '成都', '杭州', '南京', '�
 const Home = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [city, setCity] = useState<string>('广州');
+  const [show, setShow] = useState<boolean>(false);
+
   const handleShow = () => {
     setVisible(!visible);
   };
@@ -23,19 +25,22 @@ const Home = () => {
   };
   const handleClickTwoPlate = () => {
     my.ap.navigateToAlipayPage({
-      path: `https://render.alipay.com/p/s/i?appId=66666670`,
+      path: 'https://opendocs.alipay.com/support/01rb18',
     });
+  };
+  const handleScroll = (e: any) => {
+    setShow(e.detail.scrollTop > 100);
   };
   return (
     <View className="tw-bg-[#dde5e9] tw-h-screen tw-relative">
       <HeaderSwiper />
-      <View className="tw-absolute tw-left-0 tw-top-0 tw-h-screen tw-pt-3.5 tw-box-border tw-flex tw-flex-col tw-w-full">
-        <Info />
-        <ScrollView
-          scrollY
-          className="tw-bg-cover tw-flex-1  tw-mt-2 tw-bg-no-repeat tw-p-1 tw-box-border"
-          style={{ backgroundImage: `url(${contentBg})` }}
-        >
+      <ScrollView
+        scrollY
+        onScroll={handleScroll}
+        className="tw-absolute tw-left-0 tw-top-0 tw-h-screen tw-pt-4 tw-box-border tw-flex tw-flex-col tw-w-full"
+      >
+        <Info show={show} />
+        <View className="tw-bg-cover tw-flex-1  tw-mt-2 tw-bg-no-repeat tw-p-1 tw-box-border" style={{ backgroundImage: `url(${contentBg})` }}>
           <View className="tw-flex tw-items-center tw-gap-0.5 tw-pl-0.5" onClick={handleShow}>
             <Image src={local} style={{ width: 20, height: 20, flexShrink: 0, marginTop: 2 }} />
             <Text className="tw-text-[#515151] tw-text-[16px]">
@@ -50,7 +55,7 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">地区历史</Text>
             </View>
             <View className="tw-mt-1">
-              {news.map((item, index) => {
+              {cityNews[city]?.history?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={handleClickTwoPlate}>
                     <View>
@@ -77,7 +82,7 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">游玩资讯</Text>
             </View>
             <View className="tw-mt-1">
-              {news.map((item, index) => {
+              {cityNews[city]?.play?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1">
                     <View>
@@ -104,7 +109,7 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">文化故事</Text>
             </View>
             <View className="tw-mt-1">
-              {news.map((item, index) => {
+              {cityNews[city]?.culture?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1">
                     <View>
@@ -123,8 +128,8 @@ const Home = () => {
               })}
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
 
       <View className=" tw-absolute tw-top-0  tw-h-screen tw-w-full tw-bg-[#fff] " style={{ display: visible ? 'block' : 'none' }}>
         <View className="tw-flex tw-flex-col tw-gap-1">

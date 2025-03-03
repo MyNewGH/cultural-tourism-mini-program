@@ -32,6 +32,7 @@ function getCurrentDateRange(): string {
 const Home = () => {
   const [key, setKey] = useState<string>('港澳行');
   const [god, setGod] = useState<string>('天天神券');
+  const [show, setShow] = useState<boolean>(false);
   const handleClickOnePlate = (scheme?: string, appcode?: string) => {
     if (scheme) {
       navigateToMiniProgramScheme({
@@ -57,16 +58,19 @@ const Home = () => {
       path: `https://render.alipay.com/p/s/i?appId=${code}`,
     });
   };
+  const handleScroll = (e: any) => {
+    setShow(e.detail.scrollTop > 100);
+  };
   return (
     <View className="tw-bg-[#dde5e9] tw-h-screen tw-relative">
       <HeaderSwiper />
-      <View className="tw-absolute tw-left-0 tw-top-0 tw-h-screen tw-pt-3.5 tw-box-border tw-flex tw-flex-col tw-w-full">
-        <Info />
-        <ScrollView
-          scrollY
-          className="tw-bg-cover tw-flex-1  tw-mt-2 tw-bg-no-repeat tw-p-1 tw-box-border"
-          style={{ backgroundImage: `url(${contentBg})` }}
-        >
+      <ScrollView
+        scrollY
+        onScroll={handleScroll}
+        className="tw-absolute tw-left-0 tw-top-0 tw-h-screen tw-pt-4 tw-box-border tw-flex tw-flex-col tw-w-full"
+      >
+        <Info show={show} />
+        <View className="tw-bg-cover tw-flex-1  tw-mt-2 tw-bg-no-repeat tw-p-1 tw-box-border" style={{ backgroundImage: `url(${contentBg})` }}>
           <View
             className="tw-flex tw-flex-col tw-p-1 tw-box-border  tw-items-center"
             style={{ backgroundImage: `url(${plate1})`, backgroundSize: '100% 100%' }}
@@ -219,8 +223,8 @@ const Home = () => {
               })}
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };

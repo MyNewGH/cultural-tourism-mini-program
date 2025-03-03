@@ -35,5 +35,18 @@ module.exports = {
       'color-2': 'rgba(34, 34, 34, 0.65)',
       'color-4': 'rgba(34, 34, 34, 0.36)',
     },
+    extend: {
+      animation: {
+        // 定义名为 fade-out 的动画
+        'fade-out': 'fadeOut 0.5s ease-in-out forwards',
+      },
+      keyframes: {
+        // 定义 fadeOut 关键帧动画
+        fadeOut: {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        },
+      },
+    },
   },
 };
