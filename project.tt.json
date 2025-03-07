@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./",
   "projectname": "cultural-tourism",
-  "description": "微糖相机小程序",
+  "description": "湾趣通小程序",
   "appid": "ttfc308a8d6301d6ee01",
   "setting": {
     "urlCheck": true,

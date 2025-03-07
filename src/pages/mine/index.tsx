@@ -9,8 +9,9 @@ import { cityNews, citys } from '@/pages/mine/config';
 import { useState } from 'react';
 import { IndexBar, IndexAnchor, Cell, Sticky } from '@antmjs/vantui';
 import classNames from 'classnames';
+import miniApi from '@/utils/miniApi';
 
-const hotCity = ['广州', '深圳', '北京', '成都', '杭州', '南京', '重庆', '东莞'];
+const hotCity = ['广州', '深圳', '东莞'];
 const Home = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [city, setCity] = useState<string>('广州');
@@ -23,10 +24,13 @@ const Home = () => {
     setCity(c);
     handleShow();
   };
-  const handleClickTwoPlate = () => {
-    my.ap.navigateToAlipayPage({
-      path: 'https://opendocs.alipay.com/support/01rb18',
-    });
+  const handleClickWeb = (item: Record<string, any>) => {
+    const { url, title } = item;
+    if (url) {
+      miniApi.navigateTo({
+        url: `/pages/web/index?url=${url}&title=${title}`,
+      });
+    }
   };
   const handleScroll = (e: any) => {
     setShow(e.detail.scrollTop > 100);
@@ -57,7 +61,7 @@ const Home = () => {
             <View className="tw-mt-1">
               {cityNews[city]?.history?.map((item, index) => {
                 return (
-                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={handleClickTwoPlate}>
+                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
                     <View>
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
@@ -84,7 +88,7 @@ const Home = () => {
             <View className="tw-mt-1">
               {cityNews[city]?.play?.map((item, index) => {
                 return (
-                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1">
+                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
                     <View>
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
@@ -111,7 +115,7 @@ const Home = () => {
             <View className="tw-mt-1">
               {cityNews[city]?.culture?.map((item, index) => {
                 return (
-                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1">
+                  <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
                     <View>
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
