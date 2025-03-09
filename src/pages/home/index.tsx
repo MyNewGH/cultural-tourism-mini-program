@@ -64,6 +64,7 @@ const Home = () => {
   return (
     <View className="tw-bg-[#dde5e9] tw-h-screen tw-relative">
       <HeaderSwiper />
+
       <ScrollView
         scrollY
         onScroll={handleScroll}

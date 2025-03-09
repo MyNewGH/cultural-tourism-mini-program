@@ -5,7 +5,7 @@ import local from '@/assets/images/local.png';
 import HeaderSwiper from '@/components/headerSwiper';
 import Info from '@/components/info';
 import eye from '@/assets/images/eye.png';
-import { cityNews, citys } from '@/pages/mine/config';
+import { allCity, citys } from '@/pages/mine/config';
 import { useState } from 'react';
 import { IndexBar, IndexAnchor, Cell, Sticky } from '@antmjs/vantui';
 import classNames from 'classnames';
@@ -59,10 +59,10 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">地区历史</Text>
             </View>
             <View className="tw-mt-1">
-              {cityNews[city]?.history?.map((item, index) => {
+              {allCity[city]?.history?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
-                    <View>
+                    <View className="tw-flex-1">
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
                         <Text className="tw-text-[12px] tw-text-[#DEB797]">横琴微信公众号</Text>
@@ -72,7 +72,7 @@ const Home = () => {
                         </Text>
                       </View>
                     </View>
-                    <Image src={item.bg} style={{ width: 90, height: 90 }} className="tw-rounded-sm tw-flex-shrink-0" />
+                    <Image src={item.bg} style={{ width: 90, height: 90 }} mode="aspectFill" className="tw-rounded-sm tw-flex-shrink-0" />
                   </View>
                 );
               })}
@@ -86,10 +86,10 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">游玩资讯</Text>
             </View>
             <View className="tw-mt-1">
-              {cityNews[city]?.play?.map((item, index) => {
+              {allCity[city]?.play?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
-                    <View>
+                    <View className="tw-flex-1">
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
                         <Text className="tw-text-[12px] tw-text-[#DEB797]">横琴微信公众号</Text>
@@ -99,7 +99,7 @@ const Home = () => {
                         </Text>
                       </View>
                     </View>
-                    <Image src={item.bg} style={{ width: 90, height: 90 }} className="tw-rounded-sm tw-flex-shrink-0" />
+                    <Image src={item.bg} style={{ width: 90, height: 90 }} mode="aspectFill" className="tw-rounded-sm tw-flex-shrink-0" />
                   </View>
                 );
               })}
@@ -113,10 +113,10 @@ const Home = () => {
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">文化故事</Text>
             </View>
             <View className="tw-mt-1">
-              {cityNews[city]?.culture?.map((item, index) => {
+              {allCity[city]?.culture?.map((item, index) => {
                 return (
                   <View key={index} className="tw-flex tw-justify-between tw-gap-2 tw-py-1" onClick={() => handleClickWeb(item)}>
-                    <View>
+                    <View className="tw-flex-1">
                       <Text className="tw-text-[#000] tw-text-[14px]  tw-leading-[24px]">{item.title}</Text>
                       <View className="tw-flex tw-justify-between tw-mt-1">
                         <Text className="tw-text-[12px] tw-text-[#DEB797]">横琴微信公众号</Text>
@@ -126,7 +126,7 @@ const Home = () => {
                         </Text>
                       </View>
                     </View>
-                    <Image src={item.bg} style={{ width: 90, height: 90 }} className="tw-rounded-sm tw-flex-shrink-0" />
+                    <Image src={item.bg} style={{ width: 90, height: 90 }} mode="aspectFill" className="tw-rounded-sm tw-flex-shrink-0" />
                   </View>
                 );
               })}
