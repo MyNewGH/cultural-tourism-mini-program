@@ -28,19 +28,12 @@ export const news = [
 
 export const citys = [
   {
-    title: 'C',
-    lists: ['潮州'],
+    title: '珠三角',
+    lists: ['广州', '佛山', '深圳', '珠海', '江门', '惠州', '中山', '肇庆'],
   },
-  { title: 'D', lists: ['东莞'] },
-  { title: 'F', lists: ['佛山'] },
-  { title: 'G', lists: ['广州'] },
-  { title: 'H', lists: ['河源', '惠州'] },
-  { title: 'J', lists: ['江门', '揭阳'] },
-  { title: 'M', lists: ['茂名', '梅州'] },
-  { title: 'Q', lists: ['清远'] },
-  { title: 'S', lists: ['深圳', '汕头', '汕尾', '韶关'] },
-  { title: 'Y', lists: ['阳江', '云浮'] },
-  { title: 'Z', lists: ['湛江', '肇庆', '中山', '珠海'] },
+  { title: '粤东', lists: ['潮州', '汕尾', '汕头', '揭阳'] },
+  { title: '粤西', lists: ['茂名', '湛江', '阳江', '云浮'] },
+  { title: '粤北', lists: ['清远', '韶关', '河源', '梅州'] },
 ];
 
 export const allCity = {

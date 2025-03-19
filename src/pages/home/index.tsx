@@ -8,12 +8,12 @@ import { plateOne, plateTwo, godCoupons } from '@/pages/home/config';
 import HeaderSwiper from '@/components/headerSwiper';
 import Info from '@/components/info';
 import { useState } from 'react';
-import classNames from 'classnames';
 import plate3 from '@/assets/images/plate3.png';
 import question from '@/assets/images/question.png';
 import { navigateToMiniProgramScheme } from '@/utils/navigateToScheme';
+import ActionButton from '@/components/actionButton';
 
-const keys = ['港澳行', '羊城行'];
+const keys = ['港澳行', '广东行'];
 const gods = ['天天神券', '生活优惠', '湾区消费券'];
 function getCurrentDateRange(): string {
   const now = new Date();
@@ -30,8 +30,6 @@ function getCurrentDateRange(): string {
   return `${dateString}-${dateString}`;
 }
 const Home = () => {
-  const [key, setKey] = useState<string>('港澳行');
-  const [god, setGod] = useState<string>('天天神券');
   const [show, setShow] = useState<boolean>(false);
   const handleClickOnePlate = (scheme?: string, appcode?: string) => {
     if (scheme) {
@@ -76,27 +74,7 @@ const Home = () => {
             className="tw-flex tw-flex-col tw-p-1 tw-box-border  tw-items-center"
             style={{ backgroundImage: `url(${plate1})`, backgroundSize: '100% 100%' }}
           >
-            <View className="tw-bg-[#e7f0ff]  tw-p-[4px] tw-rounded-xl tw-w-1/2 tw-flex tw-justify-between">
-              {keys.map((item, index) => {
-                return (
-                  <Text
-                    key={index}
-                    className={classNames(
-                      'tw-flex-1 tw-h-[38px] tw-flex tw-items-center tw-justify-center tw-rounded-xl',
-                      key === item ? 'tw-text-[#fff]' : 'tw-text-[#74757c]',
-                    )}
-                    style={{
-                      background: key === item ? 'linear-gradient(138.67deg, rgb(91, 209, 255) 9.171%,rgb(67, 146, 255) 83.342%);' : 'transparent',
-                    }}
-                    onClick={() => {
-                      setKey(item);
-                    }}
-                  >
-                    {item}
-                  </Text>
-                );
-              })}
-            </View>
+            <ActionButton keys={keys} defaultKey={keys[0]}></ActionButton>
             <View className="tw-flex tw-justify-around  tw-w-full">
               {plateOne.map((item, index) => {
                 return (
@@ -169,25 +147,8 @@ const Home = () => {
             >
               <Text className="tw-text-[#000] tw-text-[22px] tw-font-bold tw-leading-[22px]">U惠湾区</Text>
             </View>
-            <View className="tw-bg-[#e7f0ff]  tw-p-[4px] tw-rounded-xl tw-w-[90%] tw-flex tw-justify-between">
-              {gods.map((item, index) => {
-                return (
-                  <Text
-                    key={index}
-                    className={classNames(
-                      'tw-flex-1 tw-h-[38px] tw-flex tw-items-center tw-justify-center tw-rounded-xl',
-                      god === item ? 'tw-text-[#fff]' : 'tw-text-[#74757c]',
-                    )}
-                    style={{
-                      background: god === item ? 'linear-gradient(138.67deg, rgb(91, 209, 255) 9.171%,rgb(67, 146, 255) 83.342%);' : 'transparent',
-                    }}
-                    onClick={() => setGod(item)}
-                  >
-                    {item}
-                  </Text>
-                );
-              })}
-            </View>
+            <ActionButton keys={gods} defaultKey={gods[0]}></ActionButton>
+
             <View className="tw-my-1 tw-flex tw-flex-col tw-gap-1 tw-w-full">
               {godCoupons.map((item, index) => {
                 return (

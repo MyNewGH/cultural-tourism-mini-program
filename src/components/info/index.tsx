@@ -25,7 +25,7 @@ const Info: FC<{ show: boolean }> = ({ show }) => {
         <Image src={zhifubaologo} style="width: 60px;height: 20px;" />
       </View>
       <View className="tw-mt-10 tw-relative tw-flex tw-flex-col tw-gap-0.5 tw-px-2.5 tw-w-max">
-        <Text className="tw-text-[#fff] tw-text-[40px]">羊城专区</Text>
+        <Text className="tw-text-[#fff] tw-text-[40px]">湾趣通</Text>
         <Image src={hot} className="tw-absolute tw-w-3 tw-h-1.5 tw-right-4 tw-top-1.5" />
         <Text className="tw-text-[#fff] tw-text-[22px]">带你玩转粤港澳大湾区</Text>
       </View>
